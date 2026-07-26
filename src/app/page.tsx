@@ -2,7 +2,6 @@ import Link from "next/link";
 
 const LINKEDIN_URL = "https://www.linkedin.com";
 const EMAIL_ADDRESS = "hello@danyals.ca";
-// TODO: Add the final résumé PDF at public/resume.pdf.
 const RESUME_PATH = "/resume.pdf";
 
 const navigation = [
@@ -230,12 +229,12 @@ export default function Home() {
                   >
                     View Projects <Arrow />
                   </a>
-                  <a
-                    href={RESUME_PATH}
+                  <Link
+                    href="/resume"
                     className="inline-flex min-h-12 items-center justify-center gap-7 border border-zinc-400 px-6 text-sm font-semibold text-zinc-900 transition-colors hover:border-zinc-900 hover:bg-white focus-visible:border-zinc-900 focus-visible:bg-white"
                   >
                     View Résumé <Arrow diagonal />
-                  </a>
+                  </Link>
                 </div>
                 <a
                   href="https://hub.danyals.ca"
