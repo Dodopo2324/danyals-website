@@ -3,15 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "extract:chipotle": "node scripts/extract-chipotle-model.mjs",
+    "dev": "npm run extract:chipotle && next dev",
+    "build": "npm run extract:chipotle && next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
     "next": "16.2.12",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

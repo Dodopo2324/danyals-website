@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const LINKEDIN_URL = "https://www.linkedin.com";
 const EMAIL_ADDRESS = "hello@danyals.ca";
 // TODO: Add the final résumé PDF at public/resume.pdf.
@@ -39,24 +41,28 @@ const projects = [
   {
     title: "Personal Hub",
     category: "Productivity systems",
+    href: null,
     description:
       "A private productivity and information platform combining calendar, email, approvals, administration, and personal workflows.",
   },
   {
     title: "Market Intelligence",
     category: "Financial data",
+    href: null,
     description:
       "A financial-data module integrating sources such as FactSet, GLEIF, Bank of Canada, SEC EDGAR, and Statistics Canada.",
   },
   {
     title: "Chipotle Valuation",
     category: "Company analysis",
+    href: "/projects/chipotle-valuation",
     description:
       "A finance project applying company analysis and valuation methods to a public company.",
   },
   {
     title: "Software and finance experiments",
     category: "Applied projects",
+    href: null,
     description:
       "Selected tools, prototypes, and applied projects connecting financial analysis with software development.",
   },
@@ -381,9 +387,18 @@ export default function Home() {
                     <p className="mt-4 max-w-lg text-sm leading-7 text-zinc-600">
                       {project.description}
                     </p>
-                    <p className="mt-7 flex items-center gap-2 text-xs font-semibold text-zinc-500 transition-colors group-hover:text-zinc-900">
-                      View project <Arrow />
-                    </p>
+                    {project.href ? (
+                      <Link
+                        href={project.href}
+                        className="mt-7 inline-flex min-h-10 items-center gap-2 text-xs font-semibold text-zinc-600 transition-colors hover:text-zinc-950 focus-visible:text-zinc-950"
+                      >
+                        View project <Arrow />
+                      </Link>
+                    ) : (
+                      <p className="mt-7 flex items-center gap-2 text-xs font-semibold text-zinc-500 transition-colors group-hover:text-zinc-900">
+                        View project <Arrow />
+                      </p>
+                    )}
                   </div>
                 </article>
               ))}
