@@ -41,7 +41,7 @@ const projects = [
   {
     title: "Personal Hub",
     category: "Productivity systems",
-    href: null,
+    href: "/projects/personal-hub",
     description:
       "A private productivity and information platform combining calendar, email, approvals, administration, and personal workflows.",
   },
