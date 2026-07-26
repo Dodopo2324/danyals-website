@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1903" height="948" viewBox="0 0 1903 948" role="img" aria-labelledby="title description">
+  <title id="title">Market Intelligence settings</title>
+  <desc id="description">Provider configuration, refresh controls, and monitoring preferences. A local database path is redacted.</desc>
+  <image href="settings.png" width="1903" height="948" />
+  <rect x="969" y="589" width="355" height="22" rx="3" fill="#091521" />
+  <text x="981" y="604" fill="#93a4b8" font-family="Arial, sans-serif" font-size="11">Local path redacted</text>
+</svg>

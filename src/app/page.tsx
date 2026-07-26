@@ -48,7 +48,7 @@ const projects = [
   {
     title: "Market Intelligence",
     category: "Financial data",
-    href: null,
+    href: "/projects/market-intelligence",
     description:
       "A financial-data module integrating sources such as FactSet, GLEIF, Bank of Canada, SEC EDGAR, and Statistics Canada.",
   },

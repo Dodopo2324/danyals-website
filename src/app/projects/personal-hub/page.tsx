@@ -376,7 +376,6 @@ export default function PersonalHubPage() {
                 Canada. It supplements established platforms rather than
                 replacing them, and it is still being refined.
               </p>
-              {/* TODO: Create the /projects/market-intelligence case-study page next. */}
               <Link
                 href="/projects/market-intelligence"
                 className="group mt-8 inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-zinc-800 transition-colors hover:text-zinc-950 focus-visible:text-zinc-950"
