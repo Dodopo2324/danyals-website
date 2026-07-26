@@ -1,43 +1,26 @@
-type Skill = {
-  name: string;
-  evidence: string;
-};
-
-type SkillEvidenceProps = {
-  number: string;
-  title: string;
-  skills: Skill[];
-};
-
 export function SkillEvidence({
-  number,
   title,
   skills,
-}: SkillEvidenceProps) {
+  evidence,
+}: {
+  title: string;
+  skills: string[];
+  evidence: string;
+}) {
   return (
-    <section aria-labelledby={`skills-${number}`}>
-      <div className="flex items-baseline gap-4">
-        <span className="font-mono text-[0.68rem] text-zinc-400">{number}</span>
-        <h3
-          id={`skills-${number}`}
-          className="text-xl font-medium tracking-[-0.025em] text-zinc-950"
-        >
-          {title}
-        </h3>
-      </div>
-      <dl className="mt-6 border-y border-zinc-300">
+    <article className="border-t border-[#cbd2da] pt-5">
+      <h3 className="text-xl text-[#17202a]">{title}</h3>
+      <ul className="mt-5 flex flex-wrap gap-2">
         {skills.map((skill) => (
-          <div
-            key={skill.name}
-            className="grid gap-2 border-b border-zinc-300 py-5 last:border-b-0 sm:grid-cols-[9rem_1fr]"
+          <li
+            key={skill}
+            className="border border-[#cbd2da] bg-[#f8f6f1] px-3 py-2 text-xs text-[#344054]"
           >
-            <dt className="text-sm font-semibold text-zinc-800">{skill.name}</dt>
-            <dd className="text-sm leading-6 text-zinc-600">
-              {skill.evidence}
-            </dd>
-          </div>
+            {skill}
+          </li>
         ))}
-      </dl>
-    </section>
+      </ul>
+      <p className="mt-5 text-sm leading-6 text-[#667085]">{evidence}</p>
+    </article>
   );
 }

@@ -1,353 +1,194 @@
+import Image from "next/image";
 import Link from "next/link";
-
-const LINKEDIN_URL = "https://www.linkedin.com";
-const EMAIL_ADDRESS = "hello@danyals.ca";
-const RESUME_PATH = "/resume.pdf";
-
-const navigation = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Credentials", href: "#credentials" },
-  { label: "Contact", href: "#contact" },
-];
-
-const experience = [
-  {
-    company: "msi Spergel",
-    role: "Financial Debt Advisor",
-    period: "June 2025 — April 2026",
-    description:
-      "Helped clients assess financial options, prepare consumer proposal files, review budgets and assets, and coordinate documentation with trustees and creditors.",
-  },
-  {
-    company: "Picture It Media Production",
-    role: "Client Relations & Finance Partner",
-    period: "Small-business operations",
-    description:
-      "Managed pricing, contracts, invoicing, budgeting, client relationships, suppliers, and outsourced production work for small-business clients.",
-  },
-  {
-    company: "University and professional development",
-    role: "Continuing education",
-    period: "Academic & applied work",
-    description:
-      "Accounting, finance, economics, software, the CPA pathway, Bloomberg, FactSet, and applied project work.",
-  },
-];
+import { BrandMark } from "@/components/site/BrandMark";
+import { ButtonLink } from "@/components/site/ButtonLink";
+import { Eyebrow } from "@/components/site/Eyebrow";
+import { Reveal } from "@/components/site/Reveal";
+import { SectionHeading } from "@/components/site/SectionHeading";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SiteHeader } from "@/components/site/SiteHeader";
 
 const projects = [
   {
+    category: "Private software system",
     title: "Personal Hub",
-    category: "Productivity systems",
+    description:
+      "A browser-based environment for storage, document utilities, automation, information access, and cross-device workflows.",
     href: "/projects/personal-hub",
-    description:
-      "A private productivity and information platform combining calendar, email, approvals, administration, and personal workflows.",
+    image: "/projects/personal-hub/images/dashboard.png",
+    width: 1910,
+    height: 926,
+    alt: "Personal Hub dashboard showing daily information and application navigation",
   },
   {
+    category: "Financial data and research",
     title: "Market Intelligence",
-    category: "Financial data",
+    description:
+      "A private workspace combining company information, legal-entity data, public filings, and Canadian economic indicators.",
     href: "/projects/market-intelligence",
-    description:
-      "A financial-data module integrating sources such as FactSet, GLEIF, Bank of Canada, SEC EDGAR, and Statistics Canada.",
+    image: "/projects/market-intelligence/images/overview.png",
+    width: 1904,
+    height: 802,
+    alt: "Market Intelligence research workspace overview",
   },
   {
+    category: "Equity research and valuation",
     title: "Chipotle Valuation",
-    category: "Company analysis",
-    href: "/projects/chipotle-valuation",
     description:
-      "A finance project applying company analysis and valuation methods to a public company.",
+      "An academic project applying financial-statement analysis, DuPont analysis, ratios, and valuation methods.",
+    href: "/projects/chipotle-valuation",
+    image: "/resume/images/chipotle-valuation.png",
+    width: 960,
+    height: 475,
+    alt: "SWOT analysis from the Chipotle valuation project",
+  },
+];
+
+const experiences = [
+  {
+    company: "msi Spergel",
+    role: "Financial Debt Advisor",
+    dates: "June 2025 – April 2026",
+    impact:
+      "Supported more than 90 consumer proposals that were ultimately filed while guiding clients through financial review and trustee-ready documentation.",
+    href: "/resume#msi-spergel",
   },
   {
-    title: "Software and finance experiments",
-    category: "Applied projects",
-    href: null,
-    description:
-      "Selected tools, prototypes, and applied projects connecting financial analysis with software development.",
+    company: "PiktureIt Media Production",
+    role: "Client Relations & Finance Partner",
+    dates: "February 2024 – June 2025",
+    impact:
+      "Managed client relationships, pricing, invoicing, production schedules, equipment decisions, and contractor coordination.",
+    href: "/resume#piktureit",
   },
 ];
-
-const credentials = [
-  "Bloomberg Market Concepts",
-  "Bloomberg Finance Fundamentals",
-  "FactSet Essentials",
-  "CPA Ontario PSAP Skills Modules",
-  "Excel 2016 Essential Training",
-];
-
-function Arrow({ diagonal = false }: { diagonal?: boolean }) {
-  return (
-    <span aria-hidden="true" className="font-mono text-[0.8em]">
-      {diagonal ? "↗" : "→"}
-    </span>
-  );
-}
-
-function SectionHeading({
-  id,
-  number,
-  eyebrow,
-  title,
-}: {
-  id: string;
-  number: string;
-  eyebrow: string;
-  title: string;
-}) {
-  return (
-    <div className="grid gap-5 border-t border-zinc-300 pt-5 md:grid-cols-[1fr_2fr] md:gap-8">
-      <p className="flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-        <span className="font-mono text-zinc-400">{number}</span>
-        {eyebrow}
-      </p>
-      <h2
-        id={id}
-        className="max-w-2xl text-balance text-3xl font-medium leading-[1.08] tracking-[-0.035em] text-zinc-900 sm:text-4xl"
-      >
-        {title}
-      </h2>
-    </div>
-  );
-}
-
-function Header() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-zinc-200/90 bg-[#f4f3ef]/95 backdrop-blur-md">
-      <div className="mx-auto flex h-[4.5rem] max-w-[82rem] items-center justify-between px-5 sm:px-8 lg:px-12">
-        <a
-          href="#top"
-          className="group inline-flex items-center gap-3 focus-visible:outline-none"
-          aria-label="Danyals — back to top"
-        >
-          <span
-            aria-hidden="true"
-            className="grid size-7 place-items-center border border-zinc-800 text-[0.65rem] font-bold tracking-[-0.08em] text-zinc-900 transition-colors group-hover:bg-zinc-900 group-hover:text-white group-focus-visible:bg-zinc-900 group-focus-visible:text-white"
-          >
-            DS
-          </span>
-          <span className="text-sm font-bold tracking-[0.24em] text-zinc-950">
-            DANYALS
-          </span>
-        </a>
-
-        <nav aria-label="Primary navigation" className="hidden md:block">
-          <ul className="flex items-center gap-7">
-            {navigation.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  className="text-[0.78rem] font-medium text-zinc-600 transition-colors hover:text-zinc-950 focus-visible:text-zinc-950"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <details className="group relative md:hidden">
-          <summary className="flex min-h-11 cursor-pointer list-none items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-700 focus-visible:outline-none [&::-webkit-details-marker]:hidden">
-            Menu
-            <span className="relative block h-3.5 w-5" aria-hidden="true">
-              <span className="absolute left-0 top-0 h-px w-5 bg-zinc-800 transition-transform group-open:translate-y-[6px] group-open:rotate-45" />
-              <span className="absolute left-0 top-[6px] h-px w-5 bg-zinc-800 transition-opacity group-open:opacity-0" />
-              <span className="absolute left-0 top-3 h-px w-5 bg-zinc-800 transition-transform group-open:-translate-y-[6px] group-open:-rotate-45" />
-            </span>
-          </summary>
-          <nav
-            aria-label="Mobile navigation"
-            className="absolute right-0 top-[3.55rem] w-56 border border-zinc-200 bg-[#f8f7f4] p-2 shadow-[0_20px_45px_rgba(24,24,27,0.09)]"
-          >
-            <ul>
-              {navigation.map((item, index) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className="flex min-h-11 items-center justify-between border-b border-zinc-200 px-3 text-sm text-zinc-700 transition-colors last:border-0 hover:bg-white hover:text-zinc-950"
-                  >
-                    {item.label}
-                    <span
-                      aria-hidden="true"
-                      className="font-mono text-[0.65rem] text-zinc-400"
-                    >
-                      0{index + 1}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </details>
-      </div>
-    </header>
-  );
-}
 
 export default function Home() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <div id="top" className="min-h-screen bg-[#f4f3ef] text-zinc-900">
+    <div className="min-h-screen bg-[#f8f6f1] text-[#17202a]">
       <a
         href="#main-content"
-        className="fixed left-4 top-4 z-[100] -translate-y-24 bg-zinc-950 px-4 py-3 text-sm font-medium text-white transition-transform focus:translate-y-0"
+        className="fixed left-4 top-4 z-[100] -translate-y-24 bg-[#49c6c2] px-4 py-3 text-sm font-semibold text-[#07111f] transition-transform focus:translate-y-0"
       >
         Skip to content
       </a>
 
-      <Header />
+      <SiteHeader theme="dark" active="home" />
 
       <main id="main-content">
-        <section
-          aria-labelledby="hero-heading"
-          className="mx-auto max-w-[82rem] px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-24 lg:px-12 lg:pb-36 lg:pt-28"
-        >
-          <div className="grid gap-16 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end lg:gap-20">
-            <div>
-              <p className="mb-7 flex items-center gap-4 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-zinc-500">
-                <span className="h-px w-8 bg-zinc-400" aria-hidden="true" />
-                Danyal Shenoda
-              </p>
-              <h1
-                id="hero-heading"
-                className="max-w-5xl text-balance text-[2.65rem] font-medium leading-[1.02] tracking-[-0.052em] text-zinc-950 sm:text-6xl lg:text-[4.6rem]"
-              >
-                Accounting, finance, technology, and the projects connecting
-                them.
-              </h1>
-              <p className="mt-8 max-w-3xl text-pretty text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
-                I am a University of Toronto student building experience across
-                accounting, finance, economics, and software. Danyals is where I
-                document my work, selected projects, and long-term interests in
-                valuation, transactions, entrepreneurship, and technology.
-              </p>
-              <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
-                <div className="flex w-full flex-col gap-3 min-[430px]:w-auto min-[430px]:flex-row">
+        <section className="editorial-grid fine-grain dark-focus relative overflow-hidden bg-[#07111f] text-[#f5f1e8]">
+          <div className="relative z-10 mx-auto flex min-h-[calc(100svh-4.75rem)] max-w-[82rem] items-center px-5 py-20 sm:px-8 lg:min-h-[44rem] lg:px-12">
+            <div className="max-w-5xl">
+              <Reveal>
+                <Eyebrow dark>Danyal Shenoda</Eyebrow>
+              </Reveal>
+              <Reveal delay={90}>
+                <h1 className="mt-7 max-w-5xl text-balance text-[2.8rem] leading-[1.06] tracking-[-0.045em] sm:text-6xl lg:text-[4.6rem]">
+                  Accounting, finance, technology, and the work connecting them.
+                </h1>
+              </Reveal>
+              <Reveal delay={180}>
+                <p className="mt-7 max-w-2xl text-pretty text-base leading-7 text-[#a7b0be] sm:text-lg sm:leading-8">
+                  I am a University of Toronto student exploring how financial
+                  analysis, market context, technology, and business operations
+                  shape value and better decisions.
+                </p>
+              </Reveal>
+              <Reveal delay={270}>
+                <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <ButtonLink href="/#projects">Explore my work</ButtonLink>
+                  <ButtonLink href="/resume" variant="ghost">
+                    View résumé
+                  </ButtonLink>
                   <a
-                    href="#projects"
-                    className="inline-flex min-h-12 items-center justify-center gap-7 bg-zinc-900 px-6 text-sm font-semibold text-white transition-colors hover:bg-zinc-700 focus-visible:bg-zinc-700"
+                    href="#contact"
+                    className="inline-flex min-h-12 items-center gap-3 px-2 text-sm font-semibold text-[#d8dde5] transition-colors hover:text-[#49c6c2]"
                   >
-                    View Projects <Arrow />
+                    Contact <span aria-hidden="true">↓</span>
                   </a>
-                  <Link
-                    href="/resume"
-                    className="inline-flex min-h-12 items-center justify-center gap-7 border border-zinc-400 px-6 text-sm font-semibold text-zinc-900 transition-colors hover:border-zinc-900 hover:bg-white focus-visible:border-zinc-900 focus-visible:bg-white"
-                  >
-                    View Résumé <Arrow diagonal />
-                  </Link>
                 </div>
-                <a
-                  href="https://hub.danyals.ca"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex min-h-11 items-center gap-2 text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-950 focus-visible:text-zinc-950"
-                >
-                  Access Personal Hub
-                  <span className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    <Arrow diagonal />
-                  </span>
-                </a>
-              </div>
+              </Reveal>
+              <div className="accent-line mt-16 h-px w-36 bg-[#49c6c2]" />
             </div>
-
-            <aside
-              aria-label="Areas of focus"
-              className="border-l border-zinc-300 pl-6 lg:mb-1"
-            >
-              <p className="mb-5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-zinc-400">
-                Areas of focus
-              </p>
-              <ol className="space-y-3">
-                {["Accounting", "Finance", "Technology", "Entrepreneurship"].map(
-                  (area, index) => (
-                    <li
-                      key={area}
-                      className="flex items-center gap-4 text-sm text-zinc-700"
-                    >
-                      <span className="font-mono text-[0.65rem] text-zinc-400">
-                        0{index + 1}
-                      </span>
-                      {area}
-                    </li>
-                  ),
-                )}
-              </ol>
-            </aside>
           </div>
         </section>
 
         <section
           id="about"
           aria-labelledby="about-heading"
-          className="scroll-mt-20 bg-zinc-900 text-white"
+          className="scroll-mt-28"
         >
-          <div className="mx-auto max-w-[82rem] px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-32">
-            <div className="grid gap-10 lg:grid-cols-[1fr_2fr] lg:gap-8">
-              <p className="flex items-start gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-zinc-400">
-                <span className="font-mono text-zinc-500">01</span>
-                About
-              </p>
-              <div>
-                <h2
-                  id="about-heading"
-                  className="max-w-3xl text-balance text-3xl font-medium leading-[1.12] tracking-[-0.035em] text-zinc-50 sm:text-5xl"
-                >
-                  A multidisciplinary foundation for practical, considered
-                  work.
-                </h2>
-                <div className="mt-10 grid gap-8 border-t border-zinc-700 pt-8 sm:grid-cols-2 sm:gap-12">
-                  <p className="text-base leading-7 text-zinc-300">
-                    Danyal studies Accounting and Finance at the University of
-                    Toronto, alongside Economics and Computer Science. This
-                    combination shapes a practical interest in how businesses
-                    operate, make decisions, and create lasting value.
-                  </p>
-                  <p className="text-base leading-7 text-zinc-300">
-                    His interests include valuations, financial due diligence,
-                    private markets, corporate transactions, entrepreneurship
-                    through acquisition, and building useful software that
-                    makes complex work clearer.
-                  </p>
-                </div>
-              </div>
+          <div className="mx-auto max-w-[82rem] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
+            <Reveal>
+              <SectionHeading
+                eyebrow="About"
+                title="A multidisciplinary view of business"
+                id="about-heading"
+                description="My studies combine accounting and finance with economics and computer science, creating a broader way to examine performance, value, markets, and the systems supporting modern organizations."
+              />
+            </Reveal>
+            <div className="mt-12 grid border-l border-t border-[#cbd2da] sm:grid-cols-2 lg:grid-cols-4">
+              {["Accounting", "Finance", "Economics", "Computer Science"].map(
+                (discipline, index) => (
+                  <Reveal key={discipline} delay={index * 70}>
+                    <div className="flex min-h-32 flex-col justify-between border-b border-r border-[#cbd2da] p-5">
+                      <span className="text-[0.65rem] tabular-nums text-[#98a2b3]">
+                        0{index + 1}
+                      </span>
+                      <p className="font-serif text-lg text-[#17202a]">
+                        {discipline}
+                      </p>
+                    </div>
+                  </Reveal>
+                ),
+              )}
             </div>
+            <Link
+              href="/resume#summary"
+              className="mt-7 inline-flex items-center gap-3 text-sm font-semibold text-[#167d7a] hover:underline"
+            >
+              Explore the full rationale <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </section>
 
         <section
           id="experience"
           aria-labelledby="experience-heading"
-          className="scroll-mt-20"
+          className="scroll-mt-28 bg-[#f0ece4]"
         >
-          <div className="mx-auto max-w-[82rem] px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-32">
+          <div className="mx-auto max-w-[82rem] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
             <SectionHeading
-              id="experience-heading"
-              number="02"
               eyebrow="Experience"
-              title="Experience across advisory work, small-business operations, and continued learning."
+              title="Client work where analysis and communication meet"
+              id="experience-heading"
             />
-            <div className="mt-14 divide-y divide-zinc-300 border-y border-zinc-300">
-              {experience.map((item, index) => (
-                <article
-                  key={item.company}
-                  className="group grid gap-4 py-8 transition-colors hover:bg-white/55 sm:px-4 md:grid-cols-[3rem_1fr_1fr] md:gap-8 md:py-10"
-                >
-                  <p className="font-mono text-xs text-zinc-400">
-                    0{index + 1}
-                  </p>
-                  <div>
-                    <h3 className="text-lg font-semibold tracking-[-0.015em] text-zinc-950">
-                      {item.company}
-                    </h3>
-                    <p className="mt-1 text-sm text-zinc-600">{item.role}</p>
-                    <p className="mt-3 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-zinc-400">
-                      {item.period}
+            <div className="mt-12 divide-y divide-[#cbd2da] border-y border-[#cbd2da]">
+              {experiences.map((experience, index) => (
+                <Reveal key={experience.company} delay={index * 90}>
+                  <article className="grid gap-5 py-7 lg:grid-cols-[0.2fr_0.8fr_1.45fr_auto] lg:items-center lg:gap-8">
+                    <span className="text-xs tabular-nums text-[#98a2b3]">
+                      0{index + 1}
+                    </span>
+                    <div>
+                      <h3 className="text-xl text-[#17202a]">
+                        {experience.role}
+                      </h3>
+                      <p className="mt-1 text-xs text-[#667085]">
+                        {experience.company} · {experience.dates}
+                      </p>
+                    </div>
+                    <p className="max-w-2xl text-sm leading-6 text-[#667085]">
+                      {experience.impact}
                     </p>
-                  </div>
-                  <p className="max-w-xl text-sm leading-7 text-zinc-600">
-                    {item.description}
-                  </p>
-                </article>
+                    <Link
+                      href={experience.href}
+                      className="inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-[#167d7a]"
+                    >
+                      View experience <span aria-hidden="true">→</span>
+                    </Link>
+                  </article>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -356,153 +197,126 @@ export default function Home() {
         <section
           id="projects"
           aria-labelledby="projects-heading"
-          className="scroll-mt-20 bg-[#e9e8e4]"
+          className="scroll-mt-28 bg-[#07111f] text-[#f5f1e8]"
         >
-          <div className="mx-auto max-w-[82rem] px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-32">
+          <div className="mx-auto max-w-[82rem] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
             <SectionHeading
+              eyebrow="Featured projects"
+              title="Applied work across software, research, and valuation"
               id="projects-heading"
-              number="03"
-              eyebrow="Selected projects"
-              title="Independent work at the intersection of analysis, systems, and useful technology."
+              dark
             />
-            <div className="mt-14 grid border-l border-t border-zinc-300 md:grid-cols-2">
+            <div className="mt-12 grid gap-6 lg:grid-cols-3">
               {projects.map((project, index) => (
-                <article
-                  key={project.title}
-                  className="group flex min-h-72 flex-col border-b border-r border-zinc-300 bg-[#e9e8e4] p-6 transition-colors hover:bg-[#f4f3ef] sm:p-8"
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-zinc-500">
-                      {project.category}
-                    </p>
-                    <span className="font-mono text-xs text-zinc-400">
-                      0{index + 1}
-                    </span>
-                  </div>
-                  <div className="mt-auto pt-16">
-                    <h3 className="max-w-md text-2xl font-semibold tracking-[-0.03em] text-zinc-950">
-                      {project.title}
-                    </h3>
-                    <p className="mt-4 max-w-lg text-sm leading-7 text-zinc-600">
-                      {project.description}
-                    </p>
-                    {project.href ? (
+                <Reveal key={project.title} delay={index * 90}>
+                  <article className="group h-full border border-[#23364a] bg-[#0d1b2a] transition duration-300 hover:-translate-y-1 hover:border-[#3a6570] hover:shadow-[0_22px_60px_rgba(0,0,0,0.22)]">
+                    <div className="overflow-hidden border-b border-[#23364a] bg-[#07111f]">
+                      <Image
+                        src={project.image}
+                        width={project.width}
+                        height={project.height}
+                        alt={project.alt}
+                        sizes="(max-width: 1023px) 100vw, 33vw"
+                        className="h-auto w-full object-contain transition-transform duration-500 group-hover:scale-[1.015]"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <Eyebrow dark>{project.category}</Eyebrow>
+                      <h3 className="mt-5 text-2xl text-[#f5f1e8]">
+                        {project.title}
+                      </h3>
+                      <p className="mt-4 text-sm leading-6 text-[#a7b0be]">
+                        {project.description}
+                      </p>
                       <Link
                         href={project.href}
-                        className="mt-7 inline-flex min-h-10 items-center gap-2 text-xs font-semibold text-zinc-600 transition-colors hover:text-zinc-950 focus-visible:text-zinc-950"
+                        className="mt-7 flex min-h-11 items-center justify-between border-t border-[#23364a] pt-4 text-sm font-semibold text-[#49c6c2]"
                       >
-                        View project <Arrow />
+                        View case study <span aria-hidden="true">→</span>
                       </Link>
-                    ) : (
-                      <p className="mt-7 flex items-center gap-2 text-xs font-semibold text-zinc-500 transition-colors group-hover:text-zinc-900">
-                        View project <Arrow />
-                      </p>
-                    )}
-                  </div>
-                </article>
+                    </div>
+                  </article>
+                </Reveal>
               ))}
             </div>
-            <p className="mt-5 max-w-lg text-xs leading-5 text-zinc-500">
-              Project details are being prepared for publication. No external
-              links are currently available.
-            </p>
+            <a
+              href="https://hub.danyals.ca"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-[#a7b0be] hover:text-[#49c6c2]"
+            >
+              Access Personal Hub <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </section>
 
         <section
-          id="credentials"
           aria-labelledby="credentials-heading"
-          className="scroll-mt-20"
+          className="border-b border-[#cbd2da]"
         >
-          <div className="mx-auto max-w-[82rem] px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-32">
-            <SectionHeading
-              id="credentials-heading"
-              number="04"
-              eyebrow="Credentials"
-              title="Professional learning that supports the work."
-            />
-            <ol className="mt-14 grid border-l border-t border-zinc-300 sm:grid-cols-2 lg:grid-cols-3">
-              {credentials.map((credential, index) => (
-                <li
-                  key={credential}
-                  className="flex min-h-32 flex-col justify-between border-b border-r border-zinc-300 p-5 sm:min-h-40 sm:p-6"
+          <div className="mx-auto max-w-[82rem] px-5 py-16 sm:px-8 lg:px-12">
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <Eyebrow>Credentials</Eyebrow>
+                <h2
+                  id="credentials-heading"
+                  className="mt-3 text-2xl text-[#17202a]"
                 >
-                  <span className="font-mono text-xs text-zinc-400">
-                    0{index + 1}
-                  </span>
-                  <span className="max-w-xs text-base font-medium leading-6 text-zinc-800">
-                    {credential}
-                  </span>
-                </li>
-              ))}
-            </ol>
+                  Professional development
+                </h2>
+              </div>
+              <div className="grid flex-1 gap-5 sm:grid-cols-2 lg:max-w-4xl lg:grid-cols-4">
+                <BrandMark name="Bloomberg" detail="BMC & Finance Fundamentals" />
+                <BrandMark name="FactSet" detail="Essentials" />
+                <BrandMark name="CPA Ontario" detail="Student & PSAP modules" />
+                <BrandMark name="Excel" detail="Essential Training" />
+              </div>
+            </div>
+            <Link
+              href="/resume#credentials"
+              className="mt-8 inline-flex items-center gap-3 text-sm font-semibold text-[#167d7a]"
+            >
+              View credentials in context <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </section>
 
         <section
           id="contact"
           aria-labelledby="contact-heading"
-          className="scroll-mt-20 bg-zinc-900 text-white"
+          className="scroll-mt-28 bg-[#0d1b2a] text-[#f5f1e8]"
         >
-          <div className="mx-auto max-w-[82rem] px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-32">
-            <p className="mb-8 flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-zinc-400">
-              <span className="font-mono text-zinc-500">05</span>
-              Contact
-            </p>
-            <div className="grid gap-10 lg:grid-cols-[2fr_1fr] lg:items-end lg:gap-20">
+          <div className="mx-auto grid max-w-[82rem] gap-10 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[1.35fr_0.65fr] lg:items-end lg:px-12">
+            <div>
+              <Eyebrow dark>Contact</Eyebrow>
               <h2
                 id="contact-heading"
-                className="max-w-4xl text-balance text-3xl font-medium leading-[1.1] tracking-[-0.04em] text-zinc-50 sm:text-5xl lg:text-6xl"
+                className="mt-6 max-w-4xl text-balance text-3xl leading-[1.12] tracking-[-0.035em] sm:text-5xl"
               >
-                I am interested in conversations about accounting, finance,
-                valuation, transactions, technology, and entrepreneurship.
+                Interested in accounting, finance, valuation, transactions,
+                technology, and entrepreneurship.
               </h2>
-              <div className="divide-y divide-zinc-700 border-y border-zinc-700">
-                <a
-                  href={LINKEDIN_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex min-h-14 items-center justify-between text-sm text-zinc-300 transition-colors hover:text-white focus-visible:text-white"
-                >
-                  LinkedIn
-                  <span className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    <Arrow diagonal />
-                  </span>
-                </a>
-                <a
-                  href={`mailto:${EMAIL_ADDRESS}`}
-                  className="group flex min-h-14 items-center justify-between text-sm text-zinc-300 transition-colors hover:text-white focus-visible:text-white"
-                >
-                  Email
-                  <span className="transition-transform group-hover:translate-x-1">
-                    <Arrow />
-                  </span>
-                </a>
-                <a
-                  href={RESUME_PATH}
-                  download
-                  className="group flex min-h-14 items-center justify-between text-sm text-zinc-300 transition-colors hover:text-white focus-visible:text-white"
-                >
-                  Download Résumé
-                  <span className="transition-transform group-hover:translate-y-0.5">
-                    <span aria-hidden="true">↓</span>
-                  </span>
-                </a>
-              </div>
+            </div>
+            <div className="flex flex-col gap-3">
+              <ButtonLink href="mailto:danyalshenoda1@gmail.com">
+                Email me
+              </ButtonLink>
+              <ButtonLink
+                href="https://www.linkedin.com/in/shenodad/"
+                variant="ghost"
+                external
+              >
+                LinkedIn
+              </ButtonLink>
+              <ButtonLink href="/resume.pdf" variant="ghost" download>
+                Download résumé
+              </ButtonLink>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-zinc-800 bg-zinc-900 text-zinc-400">
-        <div className="mx-auto flex max-w-[82rem] flex-col gap-5 px-5 py-7 text-xs sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-12">
-          <p className="font-bold tracking-[0.2em] text-zinc-200">DANYALS</p>
-          <p>
-            Built by Danyal Shenoda.{" "}
-            <span className="font-mono text-zinc-500">© {currentYear}</span>
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

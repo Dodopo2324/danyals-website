@@ -9,19 +9,19 @@ import type {
 function rowClassName(role: CellRole) {
   switch (role) {
     case "header":
-      return "bg-zinc-800 text-white";
+      return "bg-[#0d1b2a] text-[#f5f1e8]";
     case "section":
-      return "bg-zinc-200/80 text-zinc-950";
+      return "bg-[#ddf4f2] text-[#17202a]";
     case "output":
-      return "bg-[#eeede9] text-zinc-950";
+      return "bg-[#f0ece4] text-[#17202a]";
     case "emphasis":
-      return "bg-zinc-100 text-zinc-950";
+      return "bg-[#f6f1e8] text-[#17202a]";
     case "note":
-      return "bg-[#f7f6f2] text-zinc-700";
+      return "bg-[#f8f6f1] text-[#344054]";
     case "spacer":
-      return "h-5 bg-[#fbfaf7]";
+      return "h-5 bg-[#f8f6f1]";
     default:
-      return "text-zinc-700";
+      return "text-[#344054]";
   }
 }
 
@@ -37,16 +37,16 @@ function cellClassName(cell: ViewerCell | null, role: CellRole) {
     Boolean(cell?.display.trim().match(/^[-(]/));
 
   return [
-    "border-b border-r border-zinc-200 px-3 py-2.5 text-sm leading-5",
+    "border-b border-r border-[#e1e4e8] px-3 py-2.5 text-sm leading-5",
     role === "header"
-      ? "border-zinc-600 font-semibold"
+      ? "border-[#3a5067] font-semibold"
       : "bg-inherit font-normal",
     role === "section" || role === "output" || cell?.style.bold
       ? "font-semibold"
       : "",
-    isNumeric ? "text-right font-mono tabular-nums whitespace-nowrap" : "",
-    isNegative && role !== "header" ? "text-[#8a3a32]" : "",
-    cell?.valueUnavailable ? "italic text-zinc-400" : "",
+    isNumeric ? "text-right tabular-nums whitespace-nowrap" : "",
+    isNegative && role !== "header" ? "text-[#9a3f36]" : "",
+    cell?.valueUnavailable ? "italic text-[#98a2b3]" : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -84,7 +84,7 @@ export function FinancialTable({ sheet }: { sheet: ViewerSheet }) {
   const { starts, covered } = buildMergeMaps(sheet.merges);
 
   return (
-    <div className="max-h-[48rem] overflow-auto border border-zinc-300 bg-[#fbfaf7] shadow-[0_20px_55px_rgba(39,39,42,0.05)]">
+    <div className="financial-scroll max-h-[48rem] overflow-auto border border-[#cbd2da] bg-[#f8f6f1] shadow-[0_20px_55px_rgba(13,27,42,0.06)]">
       <table className="min-w-max border-separate border-spacing-0">
         <caption className="sr-only">
           {sheet.name}, workbook range {sheet.range}
@@ -115,7 +115,7 @@ export function FinancialTable({ sheet }: { sheet: ViewerSheet }) {
                   <th
                     scope="rowgroup"
                     colSpan={sheet.columnCount}
-                    className="border-b border-zinc-300 px-4 py-3 text-left text-sm font-semibold leading-6"
+                    className="border-b border-[#cbd2da] px-4 py-3 text-left text-sm font-semibold leading-6"
                   >
                     {narrativeCell?.display.trim()}
                   </th>

@@ -34,12 +34,12 @@ const providers = [
 
 export function SourceStatus() {
   return (
-    <div className="overflow-x-auto border border-zinc-300 bg-[#fbfaf7]">
-      <table className="min-w-[48rem] w-full border-collapse text-left">
+    <div className="financial-scroll overflow-x-auto border border-[#cbd2da] bg-[#f8f6f1]">
+      <table className="w-full min-w-[48rem] border-collapse text-left">
         <caption className="sr-only">
           Current Market Intelligence provider status
         </caption>
-        <thead className="bg-zinc-800 text-white">
+        <thead className="bg-[#0d1b2a] text-[#f5f1e8]">
           <tr>
             <th scope="col" className="px-4 py-3 text-xs font-semibold">
               Provider
@@ -57,22 +57,22 @@ export function SourceStatus() {
         </thead>
         <tbody>
           {providers.map((provider) => (
-            <tr key={provider.name} className="border-t border-zinc-300">
+            <tr key={provider.name} className="border-t border-[#cbd2da]">
               <th
                 scope="row"
-                className="px-4 py-4 text-sm font-semibold text-zinc-950"
+                className="px-4 py-4"
               >
-                {provider.name}
+                <BrandMark name={provider.name} />
               </th>
-              <td className="px-4 py-4 text-xs text-zinc-600">
+              <td className="px-4 py-4 text-xs text-[#667085]">
                 {provider.source}
               </td>
               <td className="px-4 py-4">
-                <span className="inline-flex border border-zinc-400 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-zinc-700">
+                <span className="inline-flex border border-[#cbd2da] px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-[#344054]">
                   {provider.status}
                 </span>
               </td>
-              <td className="max-w-lg px-4 py-4 text-xs leading-6 text-zinc-600">
+              <td className="max-w-lg px-4 py-4 text-xs leading-6 text-[#667085]">
                 {provider.detail}
               </td>
             </tr>
@@ -82,3 +82,4 @@ export function SourceStatus() {
     </div>
   );
 }
+import { BrandMark } from "@/components/site/BrandMark";

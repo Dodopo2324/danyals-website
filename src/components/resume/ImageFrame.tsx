@@ -29,8 +29,8 @@ export function ImageFrame({
     <figure
       className={`overflow-hidden border ${
         dark
-          ? "border-zinc-700 bg-zinc-900"
-          : "border-zinc-300 bg-[#ebeae6]"
+          ? "border-[#23364a] bg-[#07111f]"
+          : "border-[#cbd2da] bg-[#f0ece4]"
       } ${className}`}
     >
       <Image
@@ -46,8 +46,8 @@ export function ImageFrame({
         <figcaption
           className={`border-t px-4 py-3 text-xs leading-5 ${
             dark
-              ? "border-zinc-700 text-zinc-400"
-              : "border-zinc-300 text-zinc-500"
+              ? "border-[#23364a] text-[#a7b0be]"
+              : "border-[#cbd2da] text-[#667085]"
           }`}
         >
           {caption}

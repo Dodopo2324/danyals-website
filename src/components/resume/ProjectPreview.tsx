@@ -22,7 +22,7 @@ export function ProjectPreview({
   image,
 }: ProjectPreviewProps) {
   return (
-    <article className="group flex h-full flex-col border border-zinc-300 bg-[#f7f6f2]">
+    <article className="group flex h-full flex-col border border-[#cbd2da] bg-[#f8f6f1] transition duration-300 hover:-translate-y-1 hover:border-[#167d7a] hover:shadow-[0_18px_45px_rgba(13,27,42,0.08)]">
       <ImageFrame
         {...image}
         sizes="(max-width: 1023px) 100vw, 33vw"
@@ -30,14 +30,14 @@ export function ProjectPreview({
         imageClassName="transition-transform duration-300 group-hover:scale-[1.01]"
       />
       <div className="flex flex-1 flex-col p-6">
-        <p className="font-mono text-[0.68rem] text-zinc-400">{number}</p>
-        <h3 className="mt-7 text-2xl font-medium tracking-[-0.03em] text-zinc-950">
+        <p className="text-[0.68rem] tabular-nums text-[#98a2b3]">{number}</p>
+        <h3 className="mt-7 text-2xl tracking-[-0.03em] text-[#17202a]">
           {title}
         </h3>
-        <p className="mt-4 flex-1 text-sm leading-6 text-zinc-600">{summary}</p>
+        <p className="mt-4 flex-1 text-sm leading-6 text-[#667085]">{summary}</p>
         <Link
           href={href}
-          className="mt-8 inline-flex min-h-11 items-center justify-between border-t border-zinc-300 pt-4 text-sm font-semibold text-zinc-800 transition-colors hover:text-zinc-950"
+          className="mt-8 inline-flex min-h-11 items-center justify-between border-t border-[#cbd2da] pt-4 text-sm font-semibold text-[#167d7a]"
         >
           View project <span aria-hidden="true">→</span>
         </Link>

@@ -1,47 +1,65 @@
+import { Reveal } from "@/components/site/Reveal";
+
 const experiences = [
   {
     role: "Financial Debt Advisor",
     company: "msi Spergel Inc.",
     period: "June 2025 – April 2026",
+    facts: [
+      "90+ ultimately filed proposals",
+      "Primary client contact",
+      "Financial review and proposal structuring",
+    ],
     href: "#msi-spergel",
   },
   {
     role: "Client Relations & Finance Partner",
     company: "PiktureIt Media Production",
     period: "February 2024 – June 2025",
+    facts: [
+      "Approximately eight recurring contracts",
+      "Pricing and business operations",
+      "Client and production management",
+    ],
     href: "#piktureit",
   },
 ];
 
 export function ExperienceTimeline() {
   return (
-    <ol className="relative mt-12 border-l border-zinc-300">
+    <ol className="mt-10 border-y border-[#cbd2da]">
       {experiences.map((experience, index) => (
-        <li
-          key={experience.role}
-          className="relative grid gap-4 border-b border-zinc-300 py-8 pl-8 first:border-t sm:grid-cols-[8rem_minmax(0,1fr)_auto] sm:items-center sm:gap-8 sm:pl-10"
-        >
-          <span
-            className="absolute -left-[0.29rem] top-11 size-2 bg-zinc-900"
-            aria-hidden="true"
-          />
-          <span className="font-mono text-[0.7rem] tracking-[0.16em] text-zinc-400">
-            0{index + 1}
-          </span>
-          <div>
-            <h3 className="text-xl font-medium tracking-[-0.025em] text-zinc-950">
-              {experience.role}
-            </h3>
-            <p className="mt-1 text-sm text-zinc-600">
-              {experience.company} · {experience.period}
-            </p>
-          </div>
-          <a
-            href={experience.href}
-            className="inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-zinc-700 transition-colors hover:text-zinc-950"
-          >
-            Explore role <span aria-hidden="true">↓</span>
-          </a>
+        <li key={experience.role}>
+          <Reveal delay={index * 90}>
+            <article className="grid gap-6 border-b border-[#cbd2da] py-7 last:border-b-0 lg:grid-cols-[0.12fr_0.78fr_1.2fr_auto] lg:items-center lg:gap-8">
+              <span className="text-xs tabular-nums text-[#98a2b3]">
+                0{index + 1}
+              </span>
+              <div>
+                <h3 className="text-xl text-[#17202a]">{experience.role}</h3>
+                <p className="mt-2 text-xs text-[#667085]">
+                  {experience.company} · {experience.period}
+                </p>
+              </div>
+              <ul className="flex flex-wrap gap-x-5 gap-y-2">
+                {experience.facts.map((fact) => (
+                  <li
+                    key={fact}
+                    className="flex items-center gap-2 text-xs text-[#667085]"
+                  >
+                    <span className="size-1 bg-[#167d7a]" aria-hidden="true" />
+                    {fact}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={experience.href}
+                className="inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-[#167d7a]"
+              >
+                Explore this experience <span aria-hidden="true">↓</span>
+              </a>
+            </article>
+          </Reveal>
         </li>
       ))}
     </ol>

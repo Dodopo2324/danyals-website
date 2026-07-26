@@ -47,7 +47,7 @@ export function WorkbookTabs({ sheets }: { sheets: ViewerSheet[] }) {
       <div
         role="tablist"
         aria-label="Workbook sections"
-        className="flex overflow-x-auto border-b border-zinc-300"
+        className="financial-scroll flex overflow-x-auto border-b border-[#cbd2da]"
       >
         {sheets.map((sheet, index) => {
           const slug = slugify(sheet.name);
@@ -69,8 +69,8 @@ export function WorkbookTabs({ sheets }: { sheets: ViewerSheet[] }) {
               onKeyDown={(event) => handleKeyDown(event, index)}
               className={`min-h-14 shrink-0 border-b-2 px-5 text-sm font-semibold transition-colors ${
                 isActive
-                  ? "border-zinc-900 text-zinc-950"
-                  : "border-transparent text-zinc-500 hover:text-zinc-900"
+                  ? "border-[#167d7a] text-[#17202a]"
+                  : "border-transparent text-[#667085] hover:text-[#17202a]"
               }`}
             >
               {sheet.name}
@@ -87,13 +87,13 @@ export function WorkbookTabs({ sheets }: { sheets: ViewerSheet[] }) {
         className="pt-6 focus-visible:outline-offset-4"
       >
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-          <p className="text-sm text-zinc-600">
+          <p className="text-sm text-[#667085]">
             Source range{" "}
-            <span className="font-mono text-xs text-zinc-900">
+            <span className="text-xs font-semibold tabular-nums text-[#17202a]">
               {activeSheet.range}
             </span>
           </p>
-          <p className="text-xs text-zinc-500">
+          <p className="text-xs text-[#667085]">
             Scroll horizontally to view all columns
           </p>
         </div>

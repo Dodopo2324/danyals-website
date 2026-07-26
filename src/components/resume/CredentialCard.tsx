@@ -1,32 +1,37 @@
-type CredentialCardProps = {
-  number: string;
-  title: string;
-  details?: string[];
-};
+import { BrandMark } from "@/components/site/BrandMark";
 
 export function CredentialCard({
-  number,
   title,
-  details,
-}: CredentialCardProps) {
+  detail,
+  items,
+}: {
+  title: string;
+  detail: string;
+  items?: string[];
+}) {
   return (
-    <article className="border border-zinc-300 p-6">
-      <p className="font-mono text-[0.68rem] text-zinc-400">{number}</p>
-      <h3 className="mt-8 text-xl font-medium tracking-[-0.025em] text-zinc-950">
-        {title}
-      </h3>
-      {details ? (
-        <ul className="mt-5 space-y-2 border-t border-zinc-300 pt-5">
-          {details.map((detail) => (
-            <li
-              key={detail}
-              className="flex gap-3 text-xs leading-5 text-zinc-600"
-            >
-              <span className="mt-[0.55rem] size-1 shrink-0 bg-zinc-400" />
-              {detail}
-            </li>
-          ))}
-        </ul>
+    <article className="border border-[#cbd2da] bg-[#f8f6f1] p-5">
+      <BrandMark name={title} detail={detail} />
+      {items ? (
+        <details className="disclosure mt-5 border-t border-[#cbd2da]">
+          <summary className="flex min-h-12 cursor-pointer items-center justify-between text-xs font-semibold text-[#344054]">
+            View completed modules
+            <span className="disclosure-icon text-lg text-[#167d7a] transition-transform">
+              +
+            </span>
+          </summary>
+          <ul className="space-y-2 border-t border-[#cbd2da] py-4">
+            {items.map((item) => (
+              <li
+                key={item}
+                className="flex gap-3 text-xs leading-5 text-[#667085]"
+              >
+                <span className="mt-2 size-1 shrink-0 bg-[#167d7a]" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </details>
       ) : null}
     </article>
   );

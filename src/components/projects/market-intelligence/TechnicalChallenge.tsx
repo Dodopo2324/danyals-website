@@ -1,56 +1,53 @@
-const providerDifferences = [
-  "Authentication requirements",
-  "Identifier systems",
+import { Eyebrow } from "@/components/site/Eyebrow";
+
+const differences = [
+  "Authentication",
+  "Identifiers",
   "Response formats",
   "Date conventions",
   "Units",
   "Refresh schedules",
   "Rate limits",
-  "Error conditions",
-  "Entitlement rules",
+  "Entitlements",
 ];
 
 export function TechnicalChallenge() {
   return (
     <section
       aria-labelledby="technical-challenge-heading"
-      className="bg-zinc-900 text-white"
+      className="dark-focus bg-[#07111f] text-[#f5f1e8]"
     >
-      <div className="mx-auto grid max-w-[82rem] gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[1fr_2fr] lg:gap-8 lg:px-12">
+      <div className="mx-auto grid max-w-[82rem] gap-10 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-[0.72fr_1.65fr] lg:gap-14 lg:px-12">
         <div>
-          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-zinc-400">
-            Technical challenge
-          </p>
+          <Eyebrow dark>Technical challenge</Eyebrow>
           <h2
             id="technical-challenge-heading"
-            className="mt-5 max-w-lg text-balance text-3xl font-medium leading-[1.1] tracking-[-0.04em] sm:text-5xl"
+            className="mt-5 max-w-lg text-balance text-3xl leading-[1.12] sm:text-5xl"
           >
             Normalizing different data providers
           </h2>
         </div>
         <div>
-          <p className="max-w-3xl text-base leading-8 text-zinc-300">
-            The main challenge was not simply calling individual APIs. The
-            system needed a consistent way to represent source health, request
-            outcomes, timestamps, attribution, and research records without
-            hiding meaningful differences among providers.
+          <p className="max-w-3xl text-base leading-8 text-[#d8dde5]">
+            The challenge was not only calling APIs, but representing source
+            health, request outcomes, timestamps, attribution, and research
+            records consistently without hiding important provider differences.
           </p>
-          <ul className="mt-9 flex flex-wrap gap-2">
-            {providerDifferences.map((difference) => (
+          <ul className="mt-8 flex flex-wrap gap-2">
+            {differences.map((difference) => (
               <li
                 key={difference}
-                className="border border-zinc-700 px-3 py-2 text-xs text-zinc-300"
+                className="border border-[#23364a] px-3 py-2 text-xs text-[#a7b0be]"
               >
                 {difference}
               </li>
             ))}
           </ul>
-          <p className="mt-9 border-l border-zinc-600 pl-5 text-sm leading-7 text-zinc-400">
-            FactSet demonstrates why the states remain separate: a provider can
-            be configured while the requested endpoint is still unavailable to
-            the current account or allowed IP range. The interface therefore
-            reports configuration, connection state, request status, and the
-            current issue independently.
+          <p className="mt-8 border-l border-[#49c6c2] pl-5 text-sm leading-7 text-[#a7b0be]">
+            FactSet illustrates the distinction: a provider can be configured
+            while an endpoint remains unavailable to the current entitlement or
+            allowed IP range. Configuration, connection, request status, and
+            current issues are therefore reported separately.
           </p>
         </div>
       </div>

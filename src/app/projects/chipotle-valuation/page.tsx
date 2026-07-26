@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { ModelDownloadButtons } from "@/components/projects/chipotle-valuation/ModelDownloadButtons";
@@ -8,24 +8,31 @@ import type {
   ChipotleModel,
   ViewerSheet,
 } from "@/components/projects/chipotle-valuation/types";
+import { Eyebrow } from "@/components/site/Eyebrow";
+import { ProjectNavigation } from "@/components/site/ProjectNavigation";
+import { Reveal } from "@/components/site/Reveal";
+import { SectionHeading } from "@/components/site/SectionHeading";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SiteHeader } from "@/components/site/SiteHeader";
 
 const PDF_PATH =
   "/projects/chiptole-valuation/chipotle-valuation-report.pdf";
 
+const title = "Chipotle Valuation | Danyals";
+const description =
+  "A financial analysis and valuation project examining Chipotle through DuPont analysis, ratio analysis, and valuation methods.";
+
 export const metadata: Metadata = {
-  title: "Chipotle Valuation | Danyals",
-  description:
-    "A financial analysis and valuation project examining Chipotle through DuPont analysis, ratio analysis, and valuation methods.",
-  alternates: {
-    canonical: "/projects/chipotle-valuation",
-  },
+  title,
+  description,
+  alternates: { canonical: "/projects/chipotle-valuation" },
   openGraph: {
-    title: "Chipotle Valuation | Danyals",
-    description:
-      "A financial analysis and valuation project examining Chipotle through DuPont analysis, ratio analysis, and valuation methods.",
+    title,
+    description,
     url: "/projects/chipotle-valuation",
     type: "article",
   },
+  twitter: { card: "summary", title, description },
 };
 
 const modelSections = [
@@ -33,19 +40,19 @@ const modelSections = [
     number: "01",
     title: "DuPont Analysis",
     description:
-      "Breaks return on equity into profitability, efficiency, and financial leverage components.",
+      "Decomposes return on equity into profitability, efficiency, and leverage.",
   },
   {
     number: "02",
     title: "Ratio Analysis",
     description:
-      "Reviews liquidity, profitability, operating efficiency, leverage, and market-related measures across the model’s periods.",
+      "Reviews liquidity, profitability, efficiency, leverage, and market measures.",
   },
   {
     number: "03",
     title: "Valuation",
     description:
-      "Presents the workbook’s valuation assumptions, calculations, and estimated outputs.",
+      "Presents the workbook’s assumptions, calculations, and estimated outputs.",
   },
 ];
 
@@ -108,104 +115,89 @@ export default async function ChipotleValuationPage() {
   const viewerSheets = model ? createViewerSheets(model) : [];
 
   return (
-    <div className="min-h-screen bg-[#f4f3ef] text-zinc-900">
-      <header className="border-b border-zinc-200">
-        <div className="mx-auto flex h-[4.5rem] max-w-[82rem] items-center justify-between px-5 sm:px-8 lg:px-12">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-3 text-sm font-bold tracking-[0.22em] text-zinc-950"
-          >
-            <span
-              aria-hidden="true"
-              className="grid size-7 place-items-center border border-zinc-800 text-[0.65rem] tracking-[-0.08em]"
-            >
-              DS
-            </span>
-            DANYALS
-          </Link>
-          <Link
-            href="/#projects"
-            className="group inline-flex min-h-11 items-center gap-2 text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-950 focus-visible:text-zinc-950"
-          >
-            <span
-              aria-hidden="true"
-              className="transition-transform group-hover:-translate-x-1"
-            >
-              ←
-            </span>
-            Back to Projects
-          </Link>
-        </div>
-      </header>
+    <div className="min-h-screen bg-[#f8f6f1] text-[#17202a]">
+      <a
+        href="#main-content"
+        className="fixed left-4 top-4 z-[100] -translate-y-24 bg-[#49c6c2] px-4 py-3 text-sm font-semibold text-[#07111f] transition-transform focus:translate-y-0"
+      >
+        Skip to content
+      </a>
+      <SiteHeader active="projects" />
 
-      <main>
-        <section className="mx-auto max-w-[82rem] px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-24 lg:px-12 lg:pt-28">
-          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-            Equity Research &amp; Valuation
-          </p>
-          <div className="mt-7 grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end lg:gap-20">
-            <div>
-              <h1 className="max-w-4xl text-balance text-[2.8rem] font-medium leading-[1.02] tracking-[-0.052em] text-zinc-950 sm:text-6xl lg:text-[4.5rem]">
-                Chipotle Valuation
-              </h1>
-              <p className="mt-7 max-w-3xl text-pretty text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
-                A financial analysis project applying financial statement
-                analysis, profitability decomposition, ratio analysis, and
-                valuation methods to Chipotle Mexican Grill.
-              </p>
-            </div>
-            <p className="border-l border-zinc-300 pl-5 text-xs leading-6 text-zinc-500">
-              This academic project is presented for educational and portfolio
-              purposes only and does not constitute investment advice.
+      <main id="main-content">
+        <section className="mx-auto grid max-w-[82rem] gap-12 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-16 lg:px-12">
+          <Reveal>
+            <Eyebrow>Equity research and valuation</Eyebrow>
+            <h1 className="mt-6 max-w-4xl text-balance text-[2.7rem] leading-[1.06] tracking-[-0.045em] text-[#17202a] sm:text-6xl lg:text-[4.2rem]">
+              Chipotle Valuation
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-[#667085]">
+              An academic project applying financial-statement analysis,
+              profitability decomposition, ratio analysis, and valuation
+              methods to Chipotle Mexican Grill.
             </p>
-          </div>
-          <div className="mt-10">
-            <ModelDownloadButtons />
-          </div>
+            <p className="mt-5 max-w-2xl border-l border-[#167d7a] pl-4 text-xs leading-6 text-[#667085]">
+              Presented for educational and portfolio purposes only. This work
+              is not investment advice and does not imply endorsement by
+              Chipotle.
+            </p>
+            <div className="mt-8">
+              <ModelDownloadButtons />
+            </div>
+          </Reveal>
+          <Reveal direction="right">
+            <figure className="border border-[#cbd2da] bg-[#f0ece4] p-3">
+              <Image
+                src="/resume/images/chipotle-valuation.png"
+                width={960}
+                height={475}
+                alt="SWOT analysis from the academic Chipotle valuation project"
+                preload
+                sizes="(max-width: 1023px) 100vw, 42vw"
+                className="h-auto w-full object-contain"
+              />
+              <figcaption className="mt-3 text-xs leading-5 text-[#667085]">
+                Selected project visual; Chipotle is the subject of independent
+                academic analysis.
+              </figcaption>
+            </figure>
+          </Reveal>
         </section>
 
         <section
-          aria-labelledby="model-sections-heading"
-          className="bg-zinc-900 text-white"
+          aria-labelledby="overview-heading"
+          className="dark-focus bg-[#07111f] text-[#f5f1e8]"
         >
           <div className="mx-auto max-w-[82rem] px-5 py-20 sm:px-8 sm:py-24 lg:px-12">
-            <div className="grid gap-8 md:grid-cols-[1fr_2fr]">
-              <div>
-                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-zinc-400">
-                  Project scope
-                </p>
-                <h2
-                  id="model-sections-heading"
-                  className="mt-4 text-3xl font-medium tracking-[-0.04em]"
+            <SectionHeading
+              eyebrow="Project overview"
+              title="A structured view of performance and value"
+              id="overview-heading"
+              description="The project moves from historical financial performance to profitability decomposition, operating and market ratios, and a valuation view. The website preserves the source workbook’s displayed values and makes the report available beside an interactive browser viewer."
+              dark
+            />
+            <div className="mt-10 grid border-l border-t border-[#23364a] md:grid-cols-3">
+              {modelSections.map((section) => (
+                <article
+                  key={section.title}
+                  className="min-h-52 border-b border-r border-[#23364a] p-5"
                 >
-                  Model sections
-                </h2>
-              </div>
-              <div className="grid border-l border-t border-zinc-700 md:grid-cols-3">
-                {modelSections.map((section) => (
-                  <article
-                    key={section.title}
-                    className="flex min-h-56 flex-col border-b border-r border-zinc-700 p-5"
-                  >
-                    <span className="font-mono text-xs text-zinc-500">
-                      {section.number}
-                    </span>
-                    <div className="mt-auto pt-10">
-                      <h3 className="font-semibold text-zinc-100">
-                        {section.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-6 text-zinc-400">
-                        {section.description}
-                      </p>
-                    </div>
-                  </article>
-                ))}
-              </div>
+                  <span className="text-xs tabular-nums text-[#49c6c2]">
+                    {section.number}
+                  </span>
+                  <h3 className="mt-10 text-xl text-[#f5f1e8]">
+                    {section.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-6 text-[#a7b0be]">
+                    {section.description}
+                  </p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
 
-        <div className="mx-auto max-w-[82rem] space-y-28 px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-32">
+        <div className="mx-auto max-w-[82rem] space-y-24 px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
           {model ? (
             <WorkbookViewer
               sheets={viewerSheets}
@@ -215,20 +207,20 @@ export default async function ChipotleValuationPage() {
             <section
               id="workbook-viewer"
               aria-labelledby="missing-model-heading"
-              className="scroll-mt-24 border border-amber-300 bg-amber-50 p-6"
+              className="scroll-mt-32 border border-[#b99a5b] bg-[#fff8e8] p-6"
             >
               <h2
                 id="missing-model-heading"
-                className="text-xl font-semibold text-zinc-950"
+                className="text-xl text-[#17202a]"
               >
                 Model data has not been generated
               </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-700">
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-[#667085]">
                 Run{" "}
-                <code className="bg-amber-100 px-1.5 py-0.5 font-mono text-xs">
+                <code className="bg-[#f6e8c8] px-1.5 py-0.5 text-xs">
                   npm run extract:chipotle
                 </code>{" "}
-                to generate the website data from the source workbook.
+                to generate website data from the source workbook.
               </p>
             </section>
           )}
@@ -236,16 +228,14 @@ export default async function ChipotleValuationPage() {
           <section
             id="valuation-report"
             aria-labelledby="valuation-report-heading"
-            className="scroll-mt-24"
+            className="scroll-mt-32"
           >
-            <div className="flex flex-col gap-5 border-t border-zinc-300 pt-5 sm:flex-row sm:items-end sm:justify-between">
+            <div className="flex flex-col gap-5 border-t border-[#cbd2da] pt-5 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                  Supporting document
-                </p>
+                <Eyebrow>Supporting document</Eyebrow>
                 <h2
                   id="valuation-report-heading"
-                  className="mt-4 text-3xl font-medium tracking-[-0.04em] text-zinc-950 sm:text-4xl"
+                  className="mt-4 text-3xl text-[#17202a] sm:text-4xl"
                 >
                   Valuation report
                 </h2>
@@ -254,14 +244,12 @@ export default async function ChipotleValuationPage() {
                 href={PDF_PATH}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-zinc-700 transition-colors hover:text-zinc-950 focus-visible:text-zinc-950"
+                className="inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-[#167d7a]"
               >
-                Open PDF in new tab
-                <span aria-hidden="true">↗</span>
+                Open PDF in new tab <span aria-hidden="true">↗</span>
               </a>
             </div>
-
-            <div className="mt-8 overflow-hidden border border-zinc-300 bg-zinc-200">
+            <div className="mt-8 overflow-hidden border border-[#cbd2da] bg-[#f0ece4] p-2">
               <iframe
                 src={PDF_PATH}
                 title="Chipotle valuation report"
@@ -277,11 +265,11 @@ export default async function ChipotleValuationPage() {
                 </p>
               </iframe>
             </div>
-            <p className="mt-4 text-xs leading-5 text-zinc-500">
-              If the embedded document is unavailable in your browser,{" "}
+            <p className="mt-4 text-xs leading-5 text-[#667085]">
+              If the embed is unavailable,{" "}
               <a
                 href={PDF_PATH}
-                className="underline decoration-zinc-400 underline-offset-4 hover:text-zinc-900"
+                className="font-semibold text-[#167d7a] underline underline-offset-4"
               >
                 open the report directly
               </a>{" "}
@@ -289,22 +277,47 @@ export default async function ChipotleValuationPage() {
               <a
                 href={PDF_PATH}
                 download
-                className="underline decoration-zinc-400 underline-offset-4 hover:text-zinc-900"
+                className="font-semibold text-[#167d7a] underline underline-offset-4"
               >
                 download a copy
               </a>
               .
             </p>
           </section>
+
+          <section aria-labelledby="methodology-heading">
+            <SectionHeading
+              eyebrow="Methodology and limitations"
+              title="A transparent academic model"
+              id="methodology-heading"
+            />
+            <div className="mt-9 grid gap-8 lg:grid-cols-2">
+              <p className="text-sm leading-7 text-[#667085]">
+                The browser viewer displays values extracted at build time from
+                the source workbook. It does not recompute formulas,
+                reinterpret assumptions, or replace the downloadable model.
+                Workbook ranges, merged cells, formats, and unavailable cached
+                values are handled by the extraction and viewer pipeline.
+              </p>
+              <p className="text-sm leading-7 text-[#667085]">
+                The analysis is limited by its source period, assumptions,
+                academic scope, and the methods selected. It should be read as
+                project evidence rather than a current recommendation or a
+                complete institutional research product.
+              </p>
+            </div>
+          </section>
+
+          <ProjectNavigation
+            previous={{
+              label: "Market Intelligence",
+              href: "/projects/market-intelligence",
+            }}
+          />
         </div>
       </main>
 
-      <footer className="border-t border-zinc-800 bg-zinc-900 text-zinc-400">
-        <div className="mx-auto flex max-w-[82rem] flex-col gap-4 px-5 py-7 text-xs sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-12">
-          <p className="font-bold tracking-[0.2em] text-zinc-200">DANYALS</p>
-          <p>Chipotle Valuation · Academic project</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

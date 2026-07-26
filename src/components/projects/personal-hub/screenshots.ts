@@ -56,4 +56,11 @@ export const screenshots = {
     alt: "Personal Hub Night Mode with a large clock, date, weather, city footage, and brightness controls",
     caption: "A full-screen ambient display designed for nighttime use.",
   },
+  marketIntelligence: {
+    src: "/projects/market-intelligence/images/overview.png",
+    width: 1904,
+    height: 802,
+    alt: "Market Intelligence overview within the Personal Hub environment",
+    caption: "Financial and economic research integrated into Personal Hub.",
+  },
 } satisfies Record<string, ProjectScreenshot>;

@@ -1,65 +1,57 @@
-const lessons = [
-  "Debugging beyond visible error messages",
-  "Monitoring system behaviour",
-  "Identifying a resource-lifecycle issue",
-  "Applying computer-science fundamentals to a practical problem",
+import { Eyebrow } from "@/components/site/Eyebrow";
+
+const stages = [
+  [
+    "Symptom",
+    "Night Mode worked initially, but memory usage kept rising during 4K playback until performance degraded after roughly 20–30 minutes.",
+  ],
+  [
+    "Diagnosis",
+    "With no useful visible error, I monitored the process in Task Manager and compared behaviour as clips changed.",
+  ],
+  [
+    "Cause",
+    "Previously displayed video resources were not being released correctly as new content loaded.",
+  ],
+  [
+    "Resolution",
+    "I revised the playback lifecycle so obsolete resources could be released instead of accumulating in memory.",
+  ],
+  [
+    "Lesson",
+    "The issue reinforced the value of observing system behaviour, reasoning about resource lifecycles, and debugging beyond visible messages.",
+  ],
 ];
 
 export function TechnicalChallenge() {
   return (
     <section
       aria-labelledby="technical-challenge-heading"
-      className="bg-zinc-900 text-white"
+      className="dark-focus bg-[#07111f] text-[#f5f1e8]"
     >
-      <div className="mx-auto max-w-[82rem] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.8fr] lg:gap-20">
-          <div>
-            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-zinc-400">
-              Technical challenge
-            </p>
-            <h2
-              id="technical-challenge-heading"
-              className="mt-5 max-w-md text-balance text-3xl font-medium leading-[1.1] tracking-[-0.04em] sm:text-5xl"
+      <div className="mx-auto max-w-[82rem] px-5 py-20 sm:px-8 sm:py-24 lg:px-12">
+        <Eyebrow dark>Technical challenge</Eyebrow>
+        <h2
+          id="technical-challenge-heading"
+          className="mt-5 max-w-3xl text-balance text-3xl leading-[1.12] sm:text-5xl"
+        >
+          Diagnosing a 4K video memory leak
+        </h2>
+        <dl className="mt-10 grid border-l border-t border-[#23364a] sm:grid-cols-2 lg:grid-cols-5">
+          {stages.map(([term, detail]) => (
+            <div
+              key={term}
+              className="border-b border-r border-[#23364a] p-5"
             >
-              Diagnosing a 4K video memory leak
-            </h2>
-          </div>
-
-          <div>
-            <div className="space-y-6 text-base leading-8 text-zinc-300">
-              <p>
-                Night Mode uses locally stored 4K city footage as a background.
-                The feature initially appeared to work, but after approximately
-                20 to 30 minutes, system memory usage continued rising until
-                performance degraded and playback eventually failed.
-              </p>
-              <p>
-                The issue did not produce a useful visible error. I diagnosed it
-                by monitoring memory usage in Task Manager and observing that
-                previously displayed video data was not being released
-                correctly as new content loaded.
-              </p>
-              <p>
-                The playback lifecycle was revised so old resources could be
-                released rather than accumulating in memory.
-              </p>
+              <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[#49c6c2]">
+                {term}
+              </dt>
+              <dd className="mt-4 text-xs leading-6 text-[#a7b0be]">
+                {detail}
+              </dd>
             </div>
-
-            <ul className="mt-10 grid border-l border-t border-zinc-700 sm:grid-cols-2">
-              {lessons.map((lesson, index) => (
-                <li
-                  key={lesson}
-                  className="flex min-h-28 flex-col justify-between border-b border-r border-zinc-700 p-4 text-sm leading-6 text-zinc-300"
-                >
-                  <span className="font-mono text-[0.65rem] text-zinc-500">
-                    0{index + 1}
-                  </span>
-                  {lesson}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+          ))}
+        </dl>
       </div>
     </section>
   );

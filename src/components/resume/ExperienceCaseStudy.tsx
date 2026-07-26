@@ -21,29 +21,29 @@ export function ExperienceCaseStudy({
 }: ExperienceCaseStudyProps) {
   return (
     <article id={id} aria-labelledby={`${id}-heading`} className="scroll-mt-24">
-      <header className="grid gap-8 border-t border-zinc-300 pt-6 lg:grid-cols-[0.75fr_2fr] lg:gap-16">
+      <header className="grid gap-8 border-t border-[#cbd2da] pt-6 lg:grid-cols-[0.62fr_1.6fr] lg:gap-16">
         <div>
-          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#667085]">
             {company}
           </p>
-          <p className="mt-3 font-mono text-xs text-zinc-400">{period}</p>
+          <p className="mt-3 text-xs tabular-nums text-[#98a2b3]">{period}</p>
         </div>
         <div>
           <h2
             id={`${id}-heading`}
-            className="text-balance text-4xl font-medium leading-[1.02] tracking-[-0.045em] text-zinc-950 sm:text-5xl"
+            className="text-balance text-4xl leading-[1.08] tracking-[-0.04em] text-[#17202a] sm:text-5xl"
           >
             {title}
           </h2>
-          <p className="mt-5 max-w-3xl text-xl font-medium leading-8 tracking-[-0.02em] text-zinc-800">
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-[#344054]">
             {subtitle}
           </p>
-          <p className="mt-5 max-w-3xl text-base leading-7 text-zinc-600">
+          <p className="mt-5 max-w-3xl text-sm leading-7 text-[#667085]">
             {introduction}
           </p>
         </div>
       </header>
-      <div className="mt-14">{children}</div>
+      <div className="mt-12">{children}</div>
     </article>
   );
 }

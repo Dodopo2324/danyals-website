@@ -1,31 +1,39 @@
+import { Reveal } from "@/components/site/Reveal";
+
 const workflow = [
   {
     title: "Initial inquiry",
+    short: "General information received",
     description:
       "A prospective client submitted general information after responding to an advertisement or referral.",
   },
   {
     title: "Financial consultation",
+    short: "Circumstances and objectives reviewed",
     description:
       "I contacted the client, explained the firm’s role, and reviewed their debts, payments, financial history, assets, household circumstances, and objectives.",
   },
   {
     title: "Document collection",
+    short: "Supporting information coordinated",
     description:
       "I coordinated the collection of identity, tax, employment, income, creditor, and asset documentation and followed up on missing items.",
   },
   {
     title: "Financial review",
+    short: "Repayment capacity assessed",
     description:
       "I reviewed creditor balances, assets, exemptions, income, expenses, and repayment capacity and prepared a feasible proposal structure.",
   },
   {
-    title: "Final client verification",
+    title: "Final verification",
+    short: "Application details confirmed",
     description:
       "I completed a final call with the client to verify application details, close information gaps, and confirm the proposed payment structure.",
   },
   {
-    title: "Trustee review and filing",
+    title: "Trustee review",
+    short: "Independent review and filing",
     description:
       "The completed file was transferred to a Licensed Insolvency Trustee for independent review, the statutory meeting, and filing.",
   },
@@ -34,33 +42,54 @@ const workflow = [
 export function WorkflowDiagram() {
   return (
     <div>
-      <div className="relative">
-        <div
-          className="absolute left-[8.33%] right-[8.33%] top-[1.2rem] hidden border-t border-zinc-400 lg:block"
-          aria-hidden="true"
-        />
-        <ol className="grid gap-0 border-t border-zinc-300 lg:grid-cols-6 lg:border-t-0">
+      <ol className="grid border-l border-t border-[#cbd2da] sm:grid-cols-2 lg:grid-cols-6">
+        {workflow.map((step, index) => (
+          <li key={step.title}>
+            <Reveal delay={index * 65}>
+              <div className="flex min-h-40 flex-col border-b border-r border-[#cbd2da] p-4">
+                <span className="text-xs tabular-nums text-[#167d7a]">
+                  0{index + 1}
+                </span>
+                <div className="mt-auto pt-8">
+                  <h4 className="text-sm font-semibold text-[#17202a]">
+                    {step.title}
+                  </h4>
+                  <p className="mt-2 text-xs leading-5 text-[#667085]">
+                    {step.short}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </li>
+        ))}
+      </ol>
+
+      <details className="disclosure mt-5 border-y border-[#cbd2da]">
+        <summary className="flex min-h-14 cursor-pointer items-center justify-between gap-5 text-sm font-semibold text-[#17202a]">
+          Full workflow descriptions
+          <span className="disclosure-icon text-xl font-normal text-[#167d7a] transition-transform">
+            +
+          </span>
+        </summary>
+        <ol className="grid gap-x-10 gap-y-6 border-t border-[#cbd2da] py-7 sm:grid-cols-2">
           {workflow.map((step, index) => (
-            <li
-              key={step.title}
-              className="relative grid grid-cols-[2.5rem_1fr] gap-4 border-b border-zinc-300 py-6 lg:block lg:border-b-0 lg:border-r lg:px-4 lg:py-0 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
-            >
-              <span className="relative z-10 grid size-10 place-items-center border border-zinc-400 bg-[#f4f3ef] font-mono text-[0.68rem] text-zinc-600 lg:mx-auto">
+            <li key={step.title} className="grid grid-cols-[2rem_1fr] gap-3">
+              <span className="text-xs tabular-nums text-[#98a2b3]">
                 0{index + 1}
               </span>
-              <div className="lg:mt-6">
-                <h4 className="text-sm font-semibold leading-5 text-zinc-950 lg:min-h-10">
+              <div>
+                <h5 className="text-sm font-semibold text-[#17202a]">
                   {step.title}
-                </h4>
-                <p className="mt-3 text-xs leading-5 text-zinc-600">
+                </h5>
+                <p className="mt-2 text-xs leading-6 text-[#667085]">
                   {step.description}
                 </p>
               </div>
             </li>
           ))}
         </ol>
-      </div>
-      <p className="mt-8 border-l-2 border-zinc-800 pl-4 text-sm leading-6 text-zinc-600">
+      </details>
+      <p className="mt-6 border-l-2 border-[#167d7a] pl-4 text-xs leading-6 text-[#667085]">
         My direct involvement generally concluded once the completed file was
         transferred to the Licensed Insolvency Trustee.
       </p>
