@@ -34,7 +34,7 @@ export function SiteHeader({
             className={`grid size-8 place-items-center border text-[0.62rem] font-bold tracking-[-0.05em] transition-colors ${
               dark
                 ? "border-[#3a5067] text-[#49c6c2] group-hover:border-[#49c6c2]"
-                : "border-[#667085] text-[#167d7a] group-hover:border-[#167d7a]"
+                : "border-[#475467] text-[#116b68] group-hover:border-[#116b68]"
             }`}
           >
             DS
@@ -45,7 +45,7 @@ export function SiteHeader({
             </span>
             <span
               className={`mt-0.5 hidden text-[0.58rem] tracking-[0.12em] sm:block ${
-                dark ? "text-[#a7b0be]" : "text-[#667085]"
+                dark ? "text-[#a7b0be]" : "text-[#475467]"
               }`}
             >
               BY DANYAL SHENODA
@@ -68,10 +68,10 @@ export function SiteHeader({
                       isActive
                         ? dark
                           ? "text-[#49c6c2] after:scale-x-100"
-                          : "text-[#167d7a] after:scale-x-100"
+                          : "text-[#116b68] after:scale-x-100"
                         : dark
                           ? "text-[#a7b0be] hover:text-[#f5f1e8]"
-                          : "text-[#667085] hover:text-[#17202a]"
+                          : "text-[#475467] hover:text-[#17202a]"
                     }`}
                   >
                     {item.label}

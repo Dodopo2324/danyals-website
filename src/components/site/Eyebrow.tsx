@@ -12,7 +12,7 @@ export function Eyebrow({
   return (
     <p
       className={`text-[0.68rem] font-semibold uppercase tracking-[0.22em] ${
-        dark ? "text-[#a7b0be]" : "text-[#667085]"
+        dark ? "text-[#a7b0be]" : "text-[#475467]"
       } ${className}`}
     >
       {children}

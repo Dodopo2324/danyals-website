@@ -7,12 +7,12 @@
   --ivory-100: #f6f1e8;
   --ivory-50: #f8f6f1;
   --ink: #17202a;
-  --muted: #667085;
+  --muted: #475467;
   --muted-dark: #a7b0be;
   --silver: #cbd2da;
   --border-dark: #23364a;
   --teal: #49c6c2;
-  --teal-deep: #167d7a;
+  --teal-deep: #116b68;
   --teal-soft: #ddf4f2;
   --gold: #b99a5b;
   --page-max: 82rem;
@@ -107,28 +107,30 @@ summary {
 .reveal {
   opacity: 1;
   transform: none;
+  animation: reveal-transform 560ms var(--reveal-delay, 0ms) both ease-out;
 }
 
-.reveal.is-reveal-ready {
-  opacity: 0;
-  transform: translate3d(0, 1rem, 0);
-  transition:
-    opacity 560ms ease,
-    transform 560ms ease;
-  transition-delay: var(--reveal-delay, 0ms);
+.reveal[data-direction="left"] {
+  --reveal-x: -1rem;
+  --reveal-y: 0;
 }
 
-.reveal.is-reveal-ready[data-direction="left"] {
-  transform: translate3d(-1rem, 0, 0);
+.reveal[data-direction="right"] {
+  --reveal-x: 1rem;
+  --reveal-y: 0;
 }
 
-.reveal.is-reveal-ready[data-direction="right"] {
-  transform: translate3d(1rem, 0, 0);
-}
-
-.reveal.is-revealed {
-  opacity: 1;
-  transform: none;
+@keyframes reveal-transform {
+  from {
+    transform: translate3d(
+      var(--reveal-x, 0),
+      var(--reveal-y, 1rem),
+      0
+    );
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 details > summary {
@@ -162,9 +164,9 @@ details > summary::-webkit-details-marker {
     transition-duration: 0.01ms !important;
   }
 
-  .reveal,
-  .reveal.is-reveal-ready {
+  .reveal {
     opacity: 1 !important;
     transform: none !important;
+    animation: none !important;
   }
 }

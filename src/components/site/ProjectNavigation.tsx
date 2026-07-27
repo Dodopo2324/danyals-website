@@ -17,7 +17,7 @@ export function ProjectNavigation({
           href={previous.href}
           className="group min-h-28 border-b border-[#cbd2da] p-5 transition-colors hover:bg-white sm:border-b-0 sm:border-r"
         >
-          <span className="text-[0.65rem] uppercase tracking-[0.16em] text-[#667085]">
+          <span className="text-[0.65rem] font-medium uppercase tracking-[0.16em] text-[#475467]">
             Previous project
           </span>
           <span className="mt-4 flex items-center gap-3 text-sm font-semibold text-[#17202a]">
@@ -35,7 +35,7 @@ export function ProjectNavigation({
           href={next.href}
           className="group min-h-28 p-5 text-right transition-colors hover:bg-white"
         >
-          <span className="text-[0.65rem] uppercase tracking-[0.16em] text-[#667085]">
+          <span className="text-[0.65rem] font-medium uppercase tracking-[0.16em] text-[#475467]">
             Next project
           </span>
           <span className="mt-4 flex items-center justify-end gap-3 text-sm font-semibold text-[#17202a]">

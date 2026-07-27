@@ -14,10 +14,10 @@ const variants = {
   primary:
     "border-[#49c6c2] bg-[#49c6c2] text-[#07111f] hover:border-[#6dd4d1] hover:bg-[#6dd4d1]",
   secondary:
-    "border-[#cbd2da] text-[#17202a] hover:border-[#167d7a] hover:bg-white",
+    "border-[#cbd2da] text-[#17202a] hover:border-[#116b68] hover:bg-white",
   ghost:
     "border-[#23364a] text-[#f5f1e8] hover:border-[#49c6c2] hover:bg-[#0d1b2a]",
-  dark: "border-[#17202a] bg-[#17202a] text-[#f5f1e8] hover:border-[#167d7a] hover:bg-[#167d7a]",
+  dark: "border-[#17202a] bg-[#17202a] text-[#f5f1e8] hover:border-[#116b68] hover:bg-[#116b68]",
 };
 
 export function ButtonLink({

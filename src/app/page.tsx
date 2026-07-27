@@ -132,7 +132,7 @@ export default function Home() {
                 (discipline, index) => (
                   <Reveal key={discipline} delay={index * 70}>
                     <div className="flex min-h-32 flex-col justify-between border-b border-r border-[#cbd2da] p-5">
-                      <span className="text-[0.65rem] tabular-nums text-[#98a2b3]">
+                      <span className="text-[0.65rem] font-medium tabular-nums text-[#475467]">
                         0{index + 1}
                       </span>
                       <p className="font-serif text-lg text-[#17202a]">
@@ -145,7 +145,7 @@ export default function Home() {
             </div>
             <Link
               href="/resume#summary"
-              className="mt-7 inline-flex items-center gap-3 text-sm font-semibold text-[#167d7a] hover:underline"
+              className="mt-7 inline-flex items-center gap-3 text-sm font-semibold text-[#116b68] hover:underline"
             >
               Explore the full rationale <span aria-hidden="true">→</span>
             </Link>
@@ -167,23 +167,23 @@ export default function Home() {
               {experiences.map((experience, index) => (
                 <Reveal key={experience.company} delay={index * 90}>
                   <article className="grid gap-5 py-7 lg:grid-cols-[0.2fr_0.8fr_1.45fr_auto] lg:items-center lg:gap-8">
-                    <span className="text-xs tabular-nums text-[#98a2b3]">
+                    <span className="text-xs font-medium tabular-nums text-[#475467]">
                       0{index + 1}
                     </span>
                     <div>
                       <h3 className="text-xl text-[#17202a]">
                         {experience.role}
                       </h3>
-                      <p className="mt-1 text-xs text-[#667085]">
+                      <p className="mt-1 text-xs text-[#475467]">
                         {experience.company} · {experience.dates}
                       </p>
                     </div>
-                    <p className="max-w-2xl text-sm leading-6 text-[#667085]">
+                    <p className="max-w-2xl text-sm leading-6 text-[#475467]">
                       {experience.impact}
                     </p>
                     <Link
                       href={experience.href}
-                      className="inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-[#167d7a]"
+                      className="inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-[#116b68] underline-offset-4 hover:underline"
                     >
                       View experience <span aria-hidden="true">→</span>
                     </Link>
@@ -274,7 +274,7 @@ export default function Home() {
             </div>
             <Link
               href="/resume#credentials"
-              className="mt-8 inline-flex items-center gap-3 text-sm font-semibold text-[#167d7a]"
+              className="mt-8 inline-flex items-center gap-3 text-sm font-semibold text-[#116b68]"
             >
               View credentials in context <span aria-hidden="true">→</span>
             </Link>

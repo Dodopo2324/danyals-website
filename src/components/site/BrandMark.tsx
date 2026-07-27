@@ -21,7 +21,7 @@ export function BrandMark({
         className={`grid size-9 shrink-0 place-items-center border text-[0.6rem] font-bold tracking-[0.08em] ${
           dark
             ? "border-[#3a5067] text-[#49c6c2]"
-            : "border-[#cbd2da] text-[#167d7a]"
+            : "border-[#cbd2da] text-[#116b68]"
         }`}
       >
         {initials}
@@ -37,7 +37,7 @@ export function BrandMark({
         {detail ? (
           <span
             className={`mt-0.5 block text-[0.68rem] ${
-              dark ? "text-[#a7b0be]" : "text-[#667085]"
+              dark ? "text-[#a7b0be]" : "text-[#475467]"
             }`}
           >
             {detail}
